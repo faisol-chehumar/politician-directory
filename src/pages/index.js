@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
 import Hero from "../components/hero"
+import VoteLogCard from "../components/voteLogCard"
 
 export const query = graphql`
   query {
@@ -51,6 +52,8 @@ export const query = graphql`
             slug
           }
           title
+          approve
+          total_voter
           vote_date
         }
       }
@@ -133,6 +136,22 @@ const IndexPage = ({ data }) => (
     >
       <div className="container">
         <h2 css={{ ...cssH1 }}>สรุปผลการลงมติล่าสุด</h2>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+          }}
+        >
+          {data.allVotelogYaml.edges.map(({ node }) => (
+            <div style={{ width: "50%" }}>
+              <VoteLogCard
+                approve={node.approve}
+                total_voter={node.total_voter}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
 

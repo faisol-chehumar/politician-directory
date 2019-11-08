@@ -72,6 +72,7 @@ const PeoplePage = ({ data: { peopleYaml } }) => (
         max-height: 400px;
       `}
       src={politicianPicture(peopleYaml)}
+      alt="img"
     />
     <section css={{ ...cssSection, paddingTop: "6rem" }}>
       <div className="container">
